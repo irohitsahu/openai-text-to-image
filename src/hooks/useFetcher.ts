@@ -10,7 +10,7 @@ export function useImageFetcher() {
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState<null | string>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setLoading(true);
     setProgress(0);

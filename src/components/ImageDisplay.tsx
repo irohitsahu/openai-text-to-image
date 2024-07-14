@@ -23,14 +23,20 @@ export default function ImageDisplay({
 
       {imageURL && !loading && (
         <>
-          <p>Find your generated image below</p>
-          <img src={imageURL} width={512} height={512} alt="Generated Image" />
+          <p>Here is your imagination on a picture</p>
+          <img
+            className="rounded-sm"
+            src={imageURL}
+            width={512}
+            height={512}
+            alt="Generated Image"
+          />
         </>
       )}
 
       {!imageURL && !loading && (
         <>
-          <p>Your image will appear below</p>
+          <p>Your imagination will appear below</p>
           <PlaceholderIcon />
         </>
       )}
