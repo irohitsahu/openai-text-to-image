@@ -1,37 +1,23 @@
-type FormProps = {
-  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+import React from "react";
+
+type ButtonProps = {
+  handleSubmit: (event: React.MouseEvent<HTMLButtonElement>) => void;
   handleReset: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onInputChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  inputValue: string;
   isButtonDisabled: boolean;
   loading: boolean;
-  progress: number;
 };
 
-export default function Form({
-  inputValue,
-  isButtonDisabled,
+const SubmitResetButton = ({
   loading,
-  progress,
-  onInputChange,
-  handleSubmit,
+  isButtonDisabled,
   handleReset,
-}: FormProps) {
+  handleSubmit,
+}: ButtonProps) => {
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col justify-center items-center gap-6 w-full"
-    >
-      <textarea
-        id="prompt"
-        placeholder="Enter Your Prompt"
-        value={inputValue}
-        onChange={onInputChange}
-        className="bg-[#393E46] border border-[#EEEEEE] rounded-md p-2 font-mono shadow-lg w-full"
-      />
+    <>
       <button
-        type="submit"
         disabled={isButtonDisabled}
+        onClick={handleSubmit}
         className={`${
           isButtonDisabled
             ? "cursor-not-allowed text-slate-100/50 border-[#EEEEEE]/50 shadow-lg/80"
@@ -48,7 +34,8 @@ export default function Form({
       >
         Reset
       </button>
-      {loading && <div>Loading: {progress}%</div>}
-    </form>
+    </>
   );
-}
+};
+
+export default SubmitResetButton;
